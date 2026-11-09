@@ -1,0 +1,17 @@
+﻿# Compilacion y ejecutables
+bin/
+*.class
+fuentes.txt
+manifest.txt
+
+# Datos locales de pruebas
+datos/
+
+# IDEs y editores
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+*.tmp

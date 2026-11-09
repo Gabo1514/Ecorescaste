@@ -1,0 +1,49 @@
+===============================================================
+   OPERACION ECORESCATE - Como abrir el juego
+===============================================================
+
+1) DESCOMPRIMIR
+   Clic derecho sobre "EcoRescate.zip" > "Extraer todo..." > Extraer.
+   (No lo abras desde dentro del ZIP: primero hay que extraerlo.)
+
+2) ABRIR EL JUEGO
+   Entra a la carpeta extraida y haz doble clic en:
+
+        ejecutar.bat
+
+   (Tambien puedes hacer doble clic directamente en EcoRescate.jar)
+
+3) SI NO ABRE: INSTALAR JAVA
+   El juego necesita Java 8 o mas nuevo (gratis).
+   - Descargalo de: https://www.java.com/es/download/
+   - Instalalo con "Siguiente, Siguiente, Finalizar".
+   - Vuelve a hacer doble clic en ejecutar.bat
+
+   Si al hacer doble clic en EcoRescate.jar se abre con WinRAR u otro
+   programa, usa ejecutar.bat, o abre una ventana de comandos en la
+   carpeta y escribe:
+
+        java -jar EcoRescate.jar
+
+4) COMO SE JUEGA
+   - Escribe tu nombre, grado y seccion, y pulsa "Comenzar la mision".
+   - Elige uno de los 4 minijuegos y luego un nivel del mapa (10 por juego).
+   - Cumple los retos del nivel antes de que se acabe el tiempo.
+   - Gana hasta 3 estrellas por nivel, EcoMonedas y medallas.
+   - Usa las EcoMonedas en la Tienda para tu personaje.
+   - Esc = pausa. El boton del parlante apaga o prende el sonido.
+
+5) DONDE SE GUARDAN LOS DATOS
+   En la carpeta "datos" (se crea sola al jugar):
+   - datos\partidas.csv  -> todas las partidas (se abre en Excel)
+   - datos\perfiles\     -> monedas, medallas y personaje de cada alumno
+   Para juntar los resultados de varias computadoras, copia el
+   archivo partidas.csv de cada una.
+
+6) PARA EDITAR EL CODIGO (NetBeans / VS Code)
+   El codigo fuente esta en la carpeta "src". Lee LEEME.md.
+   - NetBeans: File > New Project > Java with Existing Sources,
+     carpeta "src", clase principal ecorescate.Main
+   - Para volver a crear el .jar: doble clic en compilar.bat
+     (necesita el JDK instalado).
+===============================================================
