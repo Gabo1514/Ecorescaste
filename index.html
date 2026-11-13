@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>EcoRescate</title>
-  <script src="https://cjrtnc.leaningtech.com/5.0/loader.js"></script>
+  <script src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; width: 100%; min-height: 100%; background: #1a1a1a; color: #fff; font-family: system-ui, sans-serif; }
@@ -27,11 +27,11 @@
         status.textContent = "La primera carga puede tardar. Mantén esta página abierta…";
       }, 20000);
       try {
-        await cheerpjInit({ version: 8 });
+        await cheerpjInit();
         clearTimeout(slowNotice);
         cheerpjCreateDisplay(800, 600, document.getElementById("game"));
         status.remove();
-        await cheerpjRunJar("/app/Ecorescaste/EcoRescate.jar");
+        await cheerpjRunJar("/app/EcoRescate.jar");
       } catch (err) {
         clearTimeout(slowNotice);
         error.style.display = "grid";
