@@ -1,19 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>EcoRescate</title>
-  <script src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
+  <script src="https://cjrtnc.leaningtech.com/5.0/loader.js"></script>
   <style>
-    body { margin: 0; background: #1a1a1a; display: flex; justify-content: center; align-items: center; height: 100vh; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; min-height: 100%; background: #1a1a1a; color: #fff; font-family: system-ui, sans-serif; }
+    body { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    #game { width: min(100vw, 800px); height: min(100vh, 600px); position: relative; }
+    #status { position: absolute; z-index: 5; top: 8px; left: 0; right: 0; margin: auto; width: fit-content; padding: 10px 16px; background: #fff; color: #222; text-align: center; }
+    #error { display: none; position: fixed; z-index: 10; inset: 0; place-items: center; padding: 24px; background: #1a1a1a; color: #fecaca; text-align: center; }
   </style>
 </head>
 <body>
+  <main id="game">
+    <div id="status" role="status">Iniciando EcoRescate…</div>
+    <div id="error" role="alert"></div>
+  </main>
   <script>
     (async function () {
-      await cheerpjInit();
-      cheerpjCreateDisplay(800, 600);
-      await cheerpjRunJar("/app/Ecorescaste/EcoRescate.jar");
+      const status = document.getElementById("status");
+      const error = document.getElementById("error");
+      const slowNotice = setTimeout(function () {
+        status.textContent = "La primera carga puede tardar. Mantén esta página abierta…";
+      }, 20000);
+      try {
+        await cheerpjInit({ version: 8 });
+        clearTimeout(slowNotice);
+        cheerpjCreateDisplay(800, 600, document.getElementById("game"));
+        status.remove();
+        await cheerpjRunJar("/app/Ecorescaste/EcoRescate.jar");
+      } catch (err) {
+        clearTimeout(slowNotice);
+        error.style.display = "grid";
+        error.textContent = "No se pudo iniciar el juego. Detalle: " + (err && err.message ? err.message : String(err));
+        console.error("Error al iniciar EcoRescate:", err);
+      }
     })();
   </script>
 </body>
