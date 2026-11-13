@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Operación EcoRescate - Jugar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #e8f5e9;
+      color: #1b5e20;
+      text-align: center;
+    }
+    h1 { margin: 16px 8px 4px; }
+    p  { margin: 4px 8px 12px; }
+    #estado { font-weight: bold; }
+    #juego {
+      display: inline-block;
+      border: 3px solid #2e7d32;
+      border-radius: 8px;
+      background: #fff;
+      max-width: 100%;
+      overflow: auto;
+    }
+  </style>
+  <script src="https://cjrtnc.leaningtech.com/4.3/loader.js"></script>
+</head>
+<body>
+  <h1>Operación EcoRescate</h1>
+  <p id="estado">Cargando el juego... (puede tardar unos segundos la primera vez)</p>
+  <div id="juego"></div>
+
+  <script>
+    (async () => {
+      const estado = document.getElementById("estado");
+      try {
+        await cheerpjInit();
+        cheerpjCreateDisplay(1100, 750, document.getElementById("juego"));
+        estado.textContent = "¡Listo! Haz clic dentro del juego para empezar.";
+        // El .jar es el mismo de siempre, sin cambios (debe estar en la raíz de la web)
+        await cheerpjRunMain("ecorescate.Main", "/app/EcoRescate.jar");
+      } catch (e) {
+        estado.textContent = "No se pudo cargar el juego: " + e;
+      }
+    })();
+  </script>
+</body>
+</html>
